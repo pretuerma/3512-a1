@@ -54,7 +54,7 @@ try {
     </tr>
     <?php foreach ($rows as $r): $val = (float)$r['amount'] * (float)$r['last_close']; ?>
       <tr>
-        <td><a href="company.php?symbol=<?= $r['symbol'] ?>" target="rightFrame"><?= $r['symbol'] ?></a></td>
+        <td><a href="company.php?symbol=<?= $r['symbol'] ?>"><?= $r['symbol'] ?></a></td>
         <td><?= $r['name'] ?></td>
         <td><?= $r['sector'] ?></td>
         <td><?= $r['amount'] ?></td>
