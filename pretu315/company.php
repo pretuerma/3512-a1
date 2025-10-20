@@ -21,16 +21,16 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="/3512-a1/pretu315/css/style.css?v=<?= time() ?>">
 </head>
+<body class="company">
+    <button class="back-btn" onclick="history.back()"> Go Back</button>
 
-<body>
-
-    <h1><?= $company['symbol'] ?></h1>
+    <h2><?= $company['symbol'] ?></h2>
 
     <table border="1" cellpadding="6" cellspacing="0" width="100%">
         <tr><th colspan="2">Company Info</th></tr>
@@ -48,6 +48,8 @@ try {
     </table>
 
     <br>
+
+    <h2>History</h2>
 
     <table border="1" cellpadding="6" cellspacing="0" width="100%">
         <tr><td>History High</td><td>$<?= number_format((float)($kpi['hi'] ?? 0), 2) ?></td></tr>
