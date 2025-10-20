@@ -2,19 +2,28 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>About - Portfolio Project</title>
-</head>
-<body>
+  <title>Portfolio Project</title>
+  <link rel="stylesheet" href="/3512-a1/pretu315/css/style.css?v=<?= time() ?>">
 
-<h1>Portfolio Project</h1>
-<p>
-  <a href="index.php">Home</a> |
-  <a href="about.php">About</a> |
-  <a href="api.php">APIs</a>
-</p>
+</head>
+
+<body>
+<header>
+  <h1>Portfolio Project</h1>
+  <nav>
+    <a href="index.php">Home</a> 
+    <a href="about.php">About</a> 
+    <a href="api.php">APIs</a>
+  </nav>
+</header>
+<hr>
+
+
+<body>
 
 <hr>
 
+<main class="about-section">
 <h2>About This Project</h2>
 <p>
   This project was created for <strong>COMP 3512</strong> at Mount Royal University.
@@ -42,6 +51,6 @@
   </a>
 </p>
 
-
+</main>
 </body>
 </html>

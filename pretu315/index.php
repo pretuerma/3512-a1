@@ -17,23 +17,26 @@ try {
 <head>
   <meta charset="UTF-8">
   <title>Portfolio Project</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/3512-a1/pretu315/css/style.css?v=<?= time() ?>">
+
 </head>
+
 <body>
-<h1>Portfolio Project</h1>
-<p>
-  <a href="index.php">Home</a> |
-  <a href="about.php">About</a> |
-  <a href="api.php">APIs</a>
-</p>
+<header>
+  <h1>Portfolio Project</h1>
+  <nav>
+    <a href="index.php">Home</a> 
+    <a href="about.php">About</a> 
+    <a href="api.php">APIs</a>
+  </nav>
+</header>
 <hr>
 
-<table width="100%" cellspacing="0">
-  <tr>
-    <td width="35%" valign="top" style="border:2px solid #000; ">
+<main class="main-layout">
+  <section class="left-panel">
       <h2>Customers</h2>
-      <table width="100%">
-        <tr><th align="left">Name</th><th align="left">Portfolio</th></tr>
+      <table>
+         <tr><th>Name</th><th>Portfolio</th></tr>
         <?php foreach ($users as $u): ?>
           <tr>
             <td><?= $u['lastname'] . ', ' . $u['firstname'] ?></td> 
@@ -41,18 +44,15 @@ try {
           </tr>
         <?php endforeach; ?>
       </table>
-    </td>
+  </section>
 
-    <td valign="top">
-      <iframe
-        name="rightFrame"
-        width="100%"
-        height="700"
-        frameborder="2"
-        srcdoc="<p style='text-align:center; padding-top:2em;'>Select a customer to view their portfolio.</p>">
-      </iframe>
-    </td>
-  </tr>
-</table>
+    <section class="right-panel">
+    <iframe
+      name="rightFrame"
+      srcdoc="<p style='text-align:center; padding-top:2em;'>Select a customer to view their portfolio.</p>">
+    </iframe>
+  </section>
+
+</main>
 </body>
 </html>

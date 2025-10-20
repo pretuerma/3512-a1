@@ -31,10 +31,11 @@ try {
 <head>
   <meta charset="UTF-8">
   <title>Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/3512-a1/pretu315/css/style.css?v=<?= time() ?>">
 </head>
-<body>
-  <h1>Portfolio Summary — <?= $user['firstname'] . ' ' . $user['lastname'] ?></h1>
+<body class=portfolio>
+
+  <h2>Portfolio Summary for <?= $user['firstname'] . ' ' . $user['lastname'] ?></h2>
 
   <table border="1" cellpadding="6" cellspacing="0" width="100%">
     <tr><th>Companies</th><th># Shares</th><th>Total Value</th></tr>

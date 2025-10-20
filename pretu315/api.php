@@ -5,17 +5,27 @@ require __DIR__ . '/includes/config.inc.php'; ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>APIs - Portfolio Project</title>
+  <link rel="stylesheet" href="/3512-a1/pretu315/css/style.css?v=<?= time() ?>">
+</head>
+
+<body>
+
+<header>
   <h1>Portfolio Project</h1>
-<p>
-  <a href="index.php">Home</a> |
-  <a href="about.php">About</a> |
-  <a href="api.php">APIs</a>
-</p>
+  <nav>
+    <a href="index.php">Home</a> 
+    <a href="about.php">About</a> 
+    <a href="api.php">APIs</a>
+  </nav>
+</header>
 
 <hr>
 
-</head>
+
 <body>
+  <main class="api-section">
+  <h2>Available API Endpoints</h2>
   <table border="1" cellpadding="6" cellspacing="0">
     <tr><th>URL</th><th>Description</th></tr>
 
@@ -39,5 +49,6 @@ require __DIR__ . '/includes/config.inc.php'; ?>
       <td>Returns the history information for the AAPL sorted by ascending date</td>
     </tr>
   </table>
+  </main>
 </body>
 </html>
