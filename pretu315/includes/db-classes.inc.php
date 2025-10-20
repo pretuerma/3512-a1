@@ -32,13 +32,13 @@ class UsersDB {
   }
 
   public function getAll(): array {
-    return DatabaseHelper::runQuery($this->pdo,
-      "SELECT id, firstname, lastname FROM users ORDER BY lastname, firstname")->fetchAll();
+    $sql = "SELECT id, firstname, lastname FROM users ORDER BY lastname, firstname";
+    return DatabaseHelper::runQuery($this->pdo, $sql)->fetchAll();
   }
 
   public function getById(int $id): ?array {
-    return DatabaseHelper::runQuery($this->pdo,
-        "SELECT firstName, lastName FROM users WHERE id = ?",[$id])->fetch();
+    $sql = "SELECT firstName, lastName FROM users WHERE id = ?";
+    return DatabaseHelper::runQuery($this->pdo, $sql,[$id])->fetch();
   }
 }
 
@@ -55,15 +55,29 @@ class CompaniesDB {
 }
 
   public function getAll(): array {
-    return DatabaseHelper::runQuery($this->pdo,
-    "SELECT * FROM {$this->table} ORDER BY symbol")->fetchAll();
+    $sql = "SELECT * FROM {$this->table} ORDER BY symbol";
+    return DatabaseHelper::runQuery($this->pdo, $sql)->fetchAll();
   }
 
   public function getBySymbol(string $sym): ?array {
-    return DatabaseHelper::runQuery($this->pdo,
-     "SELECT * FROM {$this->table} WHERE symbol = ?",[$sym])->fetch();
+    $sql = "SELECT * FROM {$this->table} WHERE symbol = ?";
+    return DatabaseHelper::runQuery($this->pdo, $sql, [$sym])->fetch();
+  }
+
+  public function getKPI(string $symbol): ?array {
+    $sql = "SELECT 
+              MAX(high) AS hi, 
+              MIN(low) AS lo, 
+              SUM(volume) AS vol_sum, 
+              AVG(volume) AS vol_avg
+            FROM history 
+            WHERE symbol = ?";
+    $kpi = DatabaseHelper::runQuery($this->pdo, $sql, [$symbol])->fetch();
+    return $kpi ?: null;
   }
 }
+
+
 
 class PortfolioDB {
   private PDO $pdo;
@@ -87,5 +101,29 @@ class PortfolioDB {
       ORDER BY s.symbol
     ";
     return DatabaseHelper::runQuery($this->pdo, $sql, [$userId])->fetchAll();
+  }
+}
+
+class HistoryDB {
+  private PDO $pdo;
+
+  public function __construct(PDO $pdo){
+    $this->pdo = $pdo;
+  }
+
+  public function getHistory(string $symbol): array {
+    $sql = "SELECT date, open, high, low, close, volume
+            FROM history
+            WHERE symbol = ?
+            ORDER BY date DESC";
+    return DatabaseHelper::runQuery($this->pdo, $sql, [$symbol])->fetchAll();
+  }
+
+  public function getHistoryAsc(string $symbol): array {
+    $sql = "SELECT date, open, high, low, close, volume
+            FROM history
+            WHERE symbol = ?
+            ORDER BY date ASC";
+    return DatabaseHelper::runQuery($this->pdo, $sql, [$symbol])->fetchAll();
   }
 }
