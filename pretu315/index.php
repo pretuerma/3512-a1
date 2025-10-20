@@ -24,7 +24,7 @@ try {
 <p>
   <a href="index.php">Home</a> |
   <a href="about.php">About</a> |
-  <a href="apitester.php">APIs</a>
+  <a href="api.php">APIs</a>
 </p>
 <hr>
 
